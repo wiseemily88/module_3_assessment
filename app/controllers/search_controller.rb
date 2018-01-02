@@ -1,5 +1,6 @@
 class SearchController <ApplicationController
   def index
-    @stations = BestBuyService.new
+    @stores = Station.all_by_zip(params[:search])
+    byebug
   end
 end
