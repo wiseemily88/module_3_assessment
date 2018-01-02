@@ -19,6 +19,12 @@
       <li>
         <a href="/orders">Orders</a>
       </li>
+      <li>
+        <%= form_tag :search, :method => "get" do %>
+        <%= text_field_tag :search, params[:search], placeholder: "Enter a valid ZipCode" %>
+        <%= submit_tag "Search", :name => nil %>
+        <% end %>
+  </li>
     </ul>
   </div>
 </nav>
