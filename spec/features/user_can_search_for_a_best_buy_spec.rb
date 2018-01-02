@@ -11,7 +11,7 @@ feature "User can search for best buy location" do
   click_on "Search"
 # And I fill in a search box with "80202" and click "search"
   expect(current_path).to eq(search_path)
-  save_and_open_page
+
 # Then my current path should be "/search" (ignoring params)
 # And I should see stores within 25 miles of 80202
   expect(page).to have_content("17 Total Stores")
