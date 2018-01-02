@@ -7,6 +7,6 @@ class OrdersController < ApplicationController
     @order = Order.find(params[:id])
   end
 
-  #this is great!
+
 
 end
