@@ -6,6 +6,7 @@ describe 'Items Api' do
   get '/api/v1/items'
 
   expect(response).to be_success
+  expect(response).to have_http_status(200)
 
   items = JSON.parse(response.body)
 
@@ -18,12 +19,22 @@ describe 'Items Api' do
     get "/api/v1/items/#{id}"
 
     expect(response).to be_success
+    expect(response).to have_http_status(200)
 
      item = JSON.parse(response.body)
 
      expect(item["id"]).to eq(id)
-   end 
+   end
 
+   it 'can delete an existing item' do
+     item = create(:item)
 
+     expect(Item.count).to eq(1)
+
+     delete "/api/v1/items/#{item.id}"
+
+     expect(Item.count).to eq(0)
+     expect(response).to have_http_status(204)
+   end
 
 end
