@@ -1,4 +1,6 @@
 class Store
+  attr_reader :long_name, :city, :distance, :phone_number, :store_type
+
 
   def initialize(attrs = {})
     @long_name = attrs[:longName]
@@ -9,7 +11,7 @@ class Store
   end
 
   def self.all_by_zip(zip)
-    service.get_json.map do |raw_data|
+    BestBuyService.new(zip).get_json.map do |raw_data|
       Store.new(raw_data)
     end
 
@@ -17,9 +19,9 @@ class Store
 
   private
 
-  def self.service
-    BestBuyService.new
-  end
+  # def self.service
+  #   BestBuyService.new
+  # end
 
 
 end
