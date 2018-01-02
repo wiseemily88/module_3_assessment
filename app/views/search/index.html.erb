@@ -1,0 +1,14 @@
+<h3> Here are all the stores in a 25 mile radius </h3>
+  <h4><%= @stores.count %> Total Stores </h4>
+
+  <div class='results'>
+    <% @stores.map do |store| %>
+    <ul class='result'>
+      <li class='long_name'> <%= store.name %> </li>
+      <li class='city'> <%= store.city %> </li>
+      <li class='distance'> <%= store.distance %> </li>
+      <li class='phone_number'> <%= store.phone_number %> </li>
+      <li class='store_type'> <%= store.type %> </li>
+    </ul>
+    <%end %>
+  </div>  

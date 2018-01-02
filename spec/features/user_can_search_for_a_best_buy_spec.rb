@@ -17,14 +17,14 @@ feature "User can search for best buy location" do
   expect(page).to have_css(".results", count: 10)
 
   within(first(".result")) do
-    expect(page).to have_css(".long name")
+    expect(page).to have_css(".long_name")
     expect(page).to have_css(".city")
     expect(page).to have_css(".distance")
     expect(page).to have_css(".phone_number")
     expect(page).to have_css(".store_type")
   end
 end
-end 
+end
 
 
 # And I should see a message that says "17 Total Stores"
