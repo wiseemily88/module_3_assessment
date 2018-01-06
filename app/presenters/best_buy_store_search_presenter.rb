@@ -14,9 +14,8 @@ class BestBuyStoreSearchPresenter
     service.find_stores(zip)[:total]
   end
 
-
   private
-  attr_reader :zip
+    attr_reader :zip
 
   def service
     BestBuyService.new
