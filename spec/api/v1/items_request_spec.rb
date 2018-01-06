@@ -3,14 +3,20 @@ describe 'Items Api' do
   it 'sends a list of all items' do
     create_list(:item, 4)
 
-  get '/api/v1/items'
+    get '/api/v1/items'
 
-  expect(response).to be_success
-  expect(response).to have_http_status(200)
+    expect(response).to be_success
+    expect(response).to have_http_status(200)
+    expect(JSON.parse(response.body).size).to eq(4)
 
-  items = JSON.parse(response.body)
+    items = JSON.parse(response.body)
+    item_1 = items.last
 
-  expect(items.count).to eq(4)
+    expect(item_1).to have_key("name")
+    expect(item_1).to have_key("description")
+    expect(item_1).to have_key("image_url")
+    expect(item_1).to_not have_key("created_at")
+    expect(item_1).to_not have_key("updated_at")
   end
 
   it 'can return one item with a matching id' do
@@ -20,10 +26,17 @@ describe 'Items Api' do
 
     expect(response).to be_success
     expect(response).to have_http_status(200)
+    expect(JSON.parse(response.body).size).to eq(4)
 
      item = JSON.parse(response.body)
 
      expect(item["id"]).to eq(id)
+     expect(item).to have_key("name")
+     expect(item).to have_key("description")
+     expect(item).to have_key("image_url")
+     expect(item).to_not have_key("created_at")
+     expect(item).to_not have_key("updated_at")
+
    end
 
    it 'can delete an existing item' do
