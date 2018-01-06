@@ -1,7 +1,7 @@
 class SearchController <ApplicationController
   def index
-    @stores = Store.all_by_zip(params["search"])
-
+    @stores = BestBuyStoreSearchPresenter.new(params["search"]).all_by_zip
+    @total_results = BestBuyStoreSearchPresenter.new(params["search"]).total_results
 
   end
 end

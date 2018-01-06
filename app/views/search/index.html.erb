@@ -1,6 +1,5 @@
 <h3> Here are all the stores in a 25 mile radius </h3>
-  <h4><%= @stores.count %> Total Stores </h4>
-  <!-- I know this is wrong and can access this from the first part of the request- with more time will adjust -->
+  <h4><%= @total_results %> Total Stores </h4>
 
   <div class='results'>
     <% @stores.map do |store| %>
