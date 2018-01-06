@@ -1,5 +1,5 @@
 class BestBuyService
-
+  
   def initialize
     @conn = Faraday.new(url: "https://api.bestbuy.com/v1/") do |faraday|
       faraday.params["apiKey"] = ENV["api_key"]
@@ -14,12 +14,6 @@ class BestBuyService
 
   private
   attr_reader :conn, :filter
-
-  def get_json(url, params)
-    response = conn.get(url)
-    JSON.parse(response.body, symbolize_names: true)
-  end
-
   def filter
     {
       format: 'json',
