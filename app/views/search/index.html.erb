@@ -1,8 +1,8 @@
 <h3> Here are all the stores in a 25 mile radius </h3>
-  <h4><%= @total_results %> Total Stores </h4>
+  <h4><%= @presenter.total_results %> Total Stores </h4>
 
   <div class='results'>
-    <% @stores.map do |store| %>
+    <% @presenter.all_by_zip.map do |store| %>
     <ul class='result'>
       <li class='long_name'> <%= store.long_name %> </li>
       <li class='city'> <%= store.city %> </li>
